@@ -1,0 +1,13 @@
+.image-wrapper {
+    position: relative;
+}
+
+.image-label {
+  position: absolute;
+  font-size: xx-large;
+  color: peachpuff;
+  font-weight: bold;
+  top: 131px;
+  left: 0;
+  width: 100%;
+}

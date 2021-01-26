@@ -11,12 +11,15 @@ export const gamesListSlice = createSlice({
     initialState: {
         games: [],
         categories: [],
-        activeGames: [],
+        filter: '',
+        checkedCategoriesGameIds: [],
         status: 'idle'
     },
     reducers: {
-        filterGames: (state, action) => {
-            state = action.payload;
+        setFilter: (state, action) => {
+            state.filter = action.payload;
+        },
+        checkCategories: (state, action) => {
         }
     },
     extraReducers: {
@@ -25,10 +28,13 @@ export const gamesListSlice = createSlice({
         },
         [fetchGamesList.fulfilled]: (state, action) => {
             state.status = 'succeeded';
-            state.games = action.payload.games;
             state.categories = action.payload.categories;
-            let activeCategories = action.payload.categories.find(category => category.nameKey === "All games");
-            state.activeGames = activeCategories.games;
+            state.games = action.payload.categories.find(category => category.nameKey === "All games").games.map(({id, top}) => ({
+                ...action.payload.games.find(game => game.id === id),
+                top
+            }));
+            state.checkedCategoriesGameIds = state.games.map(({id}) => id);
+
         },
         [fetchGamesList.rejected]: (state, action) => {
             state.status = 'failed';
@@ -37,13 +43,16 @@ export const gamesListSlice = createSlice({
     }
 });
 
-export const {loadGames} = gamesListSlice.actions;
+export const {setFilter, checkCategories} = gamesListSlice.actions;
 
-export const selectGames = state => state.gamesList.games;
+export const selectCategories = state => state.gamesList.categories.filter(cat => cat.nameKey !== "All games").map(({nameKey}) => nameKey);
 
 // For every activeGame combining Game object with 'top' property
-export const selectActiveGames = state => state.gamesList.activeGames
-    .map(({id, top}) => ({...state.gamesList.games.find(game => game.id === id), top}));
+export const selectActiveGames = state => {
+    const {games, filter, checkedCategoriesGameIds} = state.gamesList;
+    return games.filter(({id, name}) => name.toLowerCase().includes(filter) && checkedCategoriesGameIds.includes(id))
+};
+
 
 export const selectStatus = state => state.gamesList.status;
 

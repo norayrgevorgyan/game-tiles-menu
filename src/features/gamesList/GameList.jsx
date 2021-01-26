@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {useSelector, useDispatch} from 'react-redux';
 import {fetchGamesList, selectActiveGames, selectStatus} from "./gamesListSlice";
 import {Col, Row} from "antd";
-import GameTile from "../../assets/GameTyle";
+import GameTile from "./components/GameTyle";
 
 const GameList = () => {
 
@@ -17,14 +17,18 @@ const GameList = () => {
 
     console.log(selectedGames, status)
     return (
-        <Row gutter={[2, 2]}>
+        <Row gutter={6}>
             <Col span={12}>
-                {selectedGames.filter(({top}) => top).map(game =>
-                    <GameTile image={game.img} top={game.top} key={game.id}/>)}
+                <Row gutter={[3, 3]} justify='center'>
+                    {selectedGames.filter(({top}) => top).map(game =>
+                        <GameTile {...game} key={game.id}/>)}
+                </Row>
             </Col>
             <Col span={12}>
-                {selectedGames.filter(({top}) => !top).map(game =>
-                    <div>{game.name}</div>)}
+                <Row gutter={[3, 3]} justify='center'>
+                    {selectedGames.filter(({top}) => !top).map(game =>
+                        <GameTile {...game} key={game.id}/>)}
+                </Row>
             </Col>
         </Row>
     )
