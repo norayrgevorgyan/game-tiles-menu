@@ -1,9 +1,16 @@
-import React, {useContext, useState, useEffect} from 'react';
-import {Layout, Menu as AntMenu, Input, Checkbox, Divider} from 'antd';
+import React, {useState, useEffect} from 'react';
+import {Layout, Menu as AntMenu, Input, Checkbox, Divider, Badge, Space} from 'antd';
 import {SearchOutlined} from '@ant-design/icons';
 import {useDispatch, useSelector} from "react-redux";
 
-import {setFilter, selectCategories, checkCategories} from "../features/gamesList/gamesListSlice";
+import {
+    setFilter,
+    selectCategories,
+    checkCategories,
+    selectStatus,
+    selectFavouritesCount
+} from "../features/gamesList/gamesListSlice";
+import {STATUS_SUCCEEDED} from "./consts";
 
 const {Sider} = Layout;
 const {SubMenu} = AntMenu;
@@ -11,6 +18,8 @@ const {SubMenu} = AntMenu;
 
 const Menu = () => {
     const dispatch = useDispatch();
+    const status = useSelector(selectStatus);
+    const favouritesCount = useSelector(selectFavouritesCount);
 
     const Categories = () => {
 
@@ -32,7 +41,7 @@ const Menu = () => {
         };
 
         useEffect(() => {
-            dispatch(checkCategories(checkedList.length === categories.length ? ["All Games"] : checkedList))
+            dispatch(checkCategories(checkedList.length === categories.length ? ["All games"] : checkedList))
         }, [checkedList]);
 
         return (
@@ -48,7 +57,7 @@ const Menu = () => {
     return (
         <Sider collapsible={false}>
             <AntMenu theme="dark" mode="inline">
-                <div style={{padding: '8px'}}>
+                <div style={{padding: '8px', marginBottom: "4px"}}>
                     <Input
                         onChange={(e) => dispatch(setFilter(e.target.value.toLowerCase()))}
                         allowClear
@@ -59,7 +68,10 @@ const Menu = () => {
                         }}/>}
                     />
                 </div>
-                <SubMenu title='Categories'>
+                <Space style={{height: '20px', padding: '8px', marginBottom: "4px"}}>
+                    <span>Favourites</span> <Badge count={favouritesCount}/>
+                </Space>
+                <SubMenu title='Categories' disabled={status !== STATUS_SUCCEEDED}>
                     <Categories/>
                 </SubMenu>
             </AntMenu>

@@ -1,8 +1,10 @@
 import React from 'react';
-import './App.css';
-import GameList from "./features/gamesList/GameList";
 import {Layout} from "antd";
+
+import GameList from "./features/gamesList/GameList";
 import Menu from "./app/Menu";
+
+import './App.css';
 
 function App() {
     return (

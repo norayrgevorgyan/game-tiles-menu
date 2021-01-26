@@ -7,7 +7,20 @@
   font-size: xx-large;
   color: peachpuff;
   font-weight: bold;
-  top: 131px;
   left: 0;
   width: 100%;
+}
+
+.image-label-sm{
+  bottom: 15px;
+}
+
+.image-label-lg{
+  bottom: 60px;
+}
+
+.favourite-image{
+  position: absolute;
+  top: 7px;
+  right: 5px;
 }
