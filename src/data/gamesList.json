@@ -1,0 +1,188 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "name": "Aquarium",
+      "img": {
+        "small": "/imgs/small/aquarium.jpg",
+        "large": "/imgs/large/aquarium1.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Arabeska",
+      "img": {
+        "small": "/imgs/small/arabeska.jpg",
+        "large": "/imgs/large/arabeska.jpg"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Bank of Gold",
+      "img": {
+        "small": "/imgs/small/bank-of-gold.jpg",
+        "large": "/imgs/large/bank-of-gold.jpg"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Basketball",
+      "img": {
+        "small": "/imgs/small/basketball.jpg",
+        "large": "/imgs/large/basketball.jpg"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Battleship",
+      "img": {
+        "small": "/imgs/small/battleship.jpg",
+        "large": "/imgs/large/battleship.jpg"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Christmas",
+      "img": {
+        "small": "/imgs/small/christmas.jpg",
+        "large": "/imgs/large/christmas.jpg"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Football",
+      "img": {
+        "small": "/imgs/small/football.jpg",
+        "large": "/imgs/large/football.jpg"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Fortune",
+      "img": {
+        "small": "/imgs/small/fortune.jpg",
+        "large": "/imgs/large/fortune.jpg"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Gansgsters",
+      "img": {
+        "small": "/imgs/small/gansgsters.jpg",
+        "large": "/imgs/large/gansgsters.jpg"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Hockey",
+      "img": {
+        "small": "/imgs/small/hockey.jpg",
+        "large": "/imgs/large/hockey.jpg"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Lucky7",
+      "img": {
+        "small": "/imgs/small/lucky7.jpg",
+        "large": "/imgs/large/lucky7.jpg"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Pyramid",
+      "img": {
+        "small": "/imgs/small/pyramid.jpg",
+        "large": "/imgs/large/pyramid.jpg"
+      }
+    },
+    {
+      "id": 13,
+      "name": "Royal Riches",
+      "img": {
+        "small": "/imgs/small/royal-riches.jpg",
+        "large": "/imgs/large/royal-riches.jpg"
+      }
+    },
+    {
+      "id": 14,
+      "name": "Saloon",
+      "img": {
+        "small": "/imgs/small/saloon.jpg",
+        "large": "/imgs/large/saloon.jpg"
+      }
+    },
+    {
+      "id": 15,
+      "name": "Super7",
+      "img": {
+        "small": "/imgs/small/Super7.jpg",
+        "large": "/imgs/large/Super7.jpg"
+      }
+    },
+    {
+      "id": 16,
+      "name": "Vegas",
+      "img": {
+        "small": "/imgs/small/vegas.jpg",
+        "large": "/imgs/large/vegas.jpg"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": 0,
+      "nameKey": "All games",
+      "games": [
+        {"id": 1, "top": true},
+        {"id": 2, "top": true},
+        {"id": 3, "top": false},
+        {"id": 4, "top": true},
+        {"id": 5, "top": false},
+        {"id": 6, "top": true},
+        {"id": 7, "top": false},
+        {"id": 8, "top": false},
+        {"id": 9, "top": true},
+        {"id": 10, "top": true},
+        {"id": 11, "top": false},
+        {"id": 12, "top": false},
+        {"id": 13, "top": false},
+        {"id": 14, "top": false},
+        {"id": 15, "top": true},
+        {"id": 16, "top": false}
+      ]
+    },
+    {
+      "id": 1,
+      "nameKey": "Scratch",
+      "games": [
+        {"id": 5, "top": false},
+        {"id": 6, "top": true},
+        {"id": 7, "top": false},
+        {"id": 8, "top": false},
+        {"id": 9, "top": true}
+      ]
+    },
+    {
+      "id": 2,
+      "nameKey": "Quick",
+      "games": [
+        {"id": 12, "top": false},
+        {"id": 13, "top": false},
+        {"id": 14, "top": false},
+        {"id": 15, "top": true}
+      ]
+    },
+    {
+      "id": 3,
+      "nameKey": "Cards",
+      "games": [
+        {"id": 1, "top": true},
+        {"id": 2, "top": true},
+        {"id": 3, "top": false},
+        {"id": 4, "top": true},
+        {"id": 5, "top": false}
+      ]
+    }
+  ]
+}
