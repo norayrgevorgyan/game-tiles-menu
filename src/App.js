@@ -2,19 +2,21 @@ import React from 'react';
 import {Layout} from "antd";
 
 import GameList from "./features/gamesList/GameList";
-import Menu from "./app/Menu";
+import Menu from "./app/menu/Menu";
 
 import './App.css';
+
+const { Content} = Layout;
 
 function App() {
     return (
         <div className="App">
-            <Layout style={{minHeight: '100vh'}}>
+            <Layout className='Layout'>
                 <Menu/>
                 <Layout>
-                    <Layout.Content>
+                    <Content>
                         <GameList/>
-                    </Layout.Content>
+                    </Content>
                 </Layout>
             </Layout>
         </div>

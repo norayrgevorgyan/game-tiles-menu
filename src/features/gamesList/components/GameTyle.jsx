@@ -9,13 +9,15 @@ import favouriteActive from '../../../assets/icons/icon-favorites-active.svg'
 import favouriteNoActive from '../../../assets/icons/icon-favorites-noactive.svg'
 
 import '../../../assets/styles/_gameTile.css'
+import {TOOLTIP_TITLE_ADD, TOOLTIP_TITLE_REMOVE} from "../../../consts";
 
 const GameTile = ({img, top, name, favourite, id}) => {
 
     const dispatch = useDispatch();
     const path = (top ? img.large : img.small);
     const favouriteImgSrc = (favourite ? favouriteActive : favouriteNoActive);
-    const tooltipTitle = favourite ? "Remove from favourite" : "Add to favourite";
+    const tooltipTitle = favourite ? TOOLTIP_TITLE_REMOVE : TOOLTIP_TITLE_ADD;
+
     let imageSrc;
     let showName = false;
     try {
@@ -29,7 +31,8 @@ const GameTile = ({img, top, name, favourite, id}) => {
             <img src={imageSrc} alt={name}/>
             {showName && <div className={`image-label ${top ? 'image-label-lg' : 'image-label-sm'}`}>{name}</div>}
             <Tooltip title={tooltipTitle} color='red'>
-                <img className='favourite-image' src={favouriteImgSrc} alt='favourite' onClick={() => dispatch(changeFavouriteStatus(id))}/>
+                <img className='favourite-image' src={favouriteImgSrc} alt='favourite'
+                     onClick={() => dispatch(changeFavouriteStatus(id))}/>
             </Tooltip>
         </Col>
     )

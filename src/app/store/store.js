@@ -1,6 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 
-import gamesListReducer from "../features/gamesList/gamesListSlice";
+import gamesListReducer from "../../features/gamesList/gamesListSlice";
 
 export default configureStore({
     reducer: {

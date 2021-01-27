@@ -1,7 +1,8 @@
-const data = require('../data/gamesList');
-
-export function getGames() {
-    return new Promise((res) => {
-        setTimeout(() => res(data), 2500)
-    })
+export default function getGames() {
+   return  fetch('./gamesList.json', {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    }).then((resp) => resp.json());
 }

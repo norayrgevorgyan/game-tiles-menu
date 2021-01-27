@@ -1,6 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import {getGames} from "../../services/gamesLoader";
-import {STATUS_FAILED, STATUS_IDLE, STATUS_LOADING, STATUS_SUCCEEDED} from "../../app/consts";
+import getGames from "../../services/gamesLoader";
+
+import {ALL_GAMES, STATUS_FAILED, STATUS_IDLE, STATUS_LOADING, STATUS_SUCCEEDED} from "../../consts";
 
 export const fetchGamesList = createAsyncThunk('games/loadGames', async () => {
     return await getGames();
@@ -40,7 +41,9 @@ export const gamesListSlice = createSlice({
         [fetchGamesList.fulfilled]: (state, action) => {
             state.status = STATUS_SUCCEEDED;
             state.categories = action.payload.categories;
-            state.games = action.payload.categories.find(category => category.nameKey === "All games").games.map(({id, top}) => ({
+
+            /** For every activeGame combining Game object with 'top' property */
+            state.games = action.payload.categories.find(category => category.nameKey === ALL_GAMES).games.map(({id, top}) => ({
                 ...action.payload.games.find(game => game.id === id),
                 top
             }));
@@ -56,9 +59,8 @@ export const gamesListSlice = createSlice({
 
 export const {setFilter, checkCategories, changeFavouriteStatus} = gamesListSlice.actions;
 
-export const selectCategories = state => state.gamesList.categories.filter(cat => cat.nameKey !== "All games").map(({nameKey}) => nameKey);
+export const selectCategories = state => state.gamesList.categories.flatMap(({nameKey}) => nameKey !== ALL_GAMES ? nameKey : []);
 
-// For every activeGame combining Game object with 'top' property
 export const selectActiveGames = state => {
     const {games, filter, checkedCategoriesGameIds} = state.gamesList;
     return games.filter(({id, name}) => name.toLowerCase().includes(filter) && checkedCategoriesGameIds.includes(id))
